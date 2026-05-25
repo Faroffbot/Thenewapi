@@ -7,7 +7,7 @@ export default function ApiDocPage({ darkMode }: { darkMode: boolean }) {
   
   // Playground States
   const [searchQuery, setSearchQuery] = useState('Batman');
-  const [scrapeUrl, setScrapeUrl] = useState('https://vegamovies.market/download-batman-begins-2005-hindi-english-480p-720p-1080p/');
+  const [scrapeUrl, setScrapeUrl] = useState('https://vegamovies.mq/download-batman-begins-2005-hindi-english-480p-720p-1080p/');
   const [isScrapeFullPage, setIsScrapeFullPage] = useState(false);
   
   const [playgroundLoading, setPlaygroundLoading] = useState(false);

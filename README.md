@@ -25,7 +25,7 @@ Scrape a specific movie or show URL to extract its details and download links.
 - **Method:** `POST`
 - **Body Parameters (JSON):**
   - `url` (required): The URL of the movie or show page to scrape.
-- **Example Body:** `{"url": "https://vegamovies.market/movie-url"}`
+- **Example Body:** `{"url": "https://vegamovies.mq/movie-url"}`
 
 ## Data Structure
 
@@ -40,7 +40,7 @@ Scrape a specific movie or show URL to extract its details and download links.
       "title": "Batman Begins (2005)",
       "cleanTitle": "Batman Begins (2005)",
       "thumbnail": "https://example.com/poster.jpg",
-      "url": "https://vegamovies.market/batman-begins/",
+      "url": "https://vegamovies.mq/batman-begins/",
       "isFromDb": false
     }
   ],

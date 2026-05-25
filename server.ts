@@ -99,10 +99,10 @@ async function startServer() {
   // Helper to check for excluded domains
   const isExcludedUrl = (href: string) => {
     const excludedDomains = [
-      "vegamovies-apk.com",
-      "vegamovies.run",
+      "vegamovies",
       "telegram.me",
       "t.me",
+      "t.co",
       "facebook.com",
       "twitter.com",
       "instagram.com",
@@ -111,9 +111,14 @@ async function startServer() {
       "pinterest.com",
       "linkedin.com",
       "discord.gg",
+      "discord.com",
       "apk-download",
       "play.google.com",
-      "apps.apple.com"
+      "apps.apple.com",
+      "imdb.com",
+      "1xbet",
+      "betway",
+      "casino"
     ];
     return excludedDomains.some(domain => href.toLowerCase().includes(domain.toLowerCase()));
   };
@@ -247,11 +252,26 @@ async function startServer() {
       const btn = $(el).find("button");
       const btnText = btn.text().trim();
       
+      const combinedText = (text + " " + btnText).toLowerCase();
+      // Skip non-download promotional, tutorial, or social links
+      if (
+        combinedText.includes("how to") || 
+        combinedText.includes("telegram") || 
+        combinedText.includes("join") || 
+        combinedText.includes("whatsapp") ||
+        combinedText.includes("trailer") ||
+        combinedText.includes("ads ") ||
+        combinedText.includes("bet")
+      ) return;
+
       const isDownload = href.includes("drive") || href.includes("link") || href.includes("nexdrive") ||
                         href.includes("gdtot") || href.includes("hubcloud") || href.includes("katdrive") ||
-                        href.includes("sharer") || btn.length > 0 ||
-                        text.toLowerCase().includes("download") || btnText.toLowerCase().includes("download") ||
-                        text.toLowerCase().includes("direct") || text.toLowerCase().includes("cloud");
+                        href.includes("sharer") || href.includes("vcloud") || href.includes("modlinx") || 
+                        href.includes("mega.nz") || href.includes("linkstaker") || href.includes("filepress") ||
+                        btn.length > 0 ||
+                        combinedText.includes("download") ||
+                        combinedText.includes("direct") || combinedText.includes("cloud") ||
+                        combinedText.includes("fast server");
 
       if (isDownload && !isExcludedUrl(href)) {
         let label = text || btnText || "Download Link";
@@ -452,7 +472,7 @@ async function startServer() {
       };
 
       await Promise.all([
-        fetchWebsiteResults('https://vegamovies.market'),
+        fetchWebsiteResults('https://vegamovies.mq'),
         fetchWebsiteResults('https://rogmovies.blog')
       ]);
 
@@ -530,7 +550,7 @@ async function startServer() {
       };
 
       await Promise.all([
-        fetchWebsiteResults('https://vegamovies.market'),
+        fetchWebsiteResults('https://vegamovies.mq'),
         fetchWebsiteResults('https://rogmovies.blog')
       ]);
       
@@ -540,7 +560,7 @@ async function startServer() {
         try {
           const subRes = await fetchWithProxyRetry(item.url, 2);
           const sub$ = cheerio.load(subRes.data);
-          const details = await extractMovieDetails(sub$, item.url, item.baseUrl || "https://vegamovies.market");
+          const details = await extractMovieDetails(sub$, item.url, item.baseUrl || "https://vegamovies.mq");
           
           let qualities: Record<string, any[]> = {};
           if (details.downloadLinks) {
@@ -643,7 +663,7 @@ async function startServer() {
       };
 
       await Promise.all([
-        fetchWebsiteResults('https://vegamovies.market'),
+        fetchWebsiteResults('https://vegamovies.mq'),
         fetchWebsiteResults('https://rogmovies.blog')
       ]);
       
@@ -653,7 +673,7 @@ async function startServer() {
         try {
           const subRes = await fetchWithProxyRetry(item.url, 2);
           const sub$ = cheerio.load(subRes.data);
-          const details = await extractMovieDetails(sub$, item.url, item.baseUrl || "https://vegamovies.market");
+          const details = await extractMovieDetails(sub$, item.url, item.baseUrl || "https://vegamovies.mq");
           return { ...item, ...details };
         } catch (e) {
           return item;
@@ -1077,7 +1097,7 @@ async function startServer() {
         };
 
         await Promise.all([
-          fetchWebsiteResults('https://vegamovies.market'),
+          fetchWebsiteResults('https://vegamovies.mq'),
           fetchWebsiteResults('https://rogmovies.blog')
         ]);
 

@@ -191,7 +191,7 @@ export default function App() {
     if (isCombinedSearch) {
       if (!currentSearchQuery) return;
       
-      const vegaUrl = `https://vegamovies.market/search.html?q=${encodeURIComponent(currentSearchQuery)}`;
+      const vegaUrl = `https://vegamovies.mq/search.html?q=${encodeURIComponent(currentSearchQuery)}`;
       const rogUrl = `https://rogmovies.blog/search.html?q=${encodeURIComponent(currentSearchQuery)}`;
       
       const isFullPage = fullPageOverride !== undefined ? fullPageOverride : fullPage;
