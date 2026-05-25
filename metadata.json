@@ -1,0 +1,8 @@
+{
+  "name": " VegaScraper -tg bot",
+  "description": "A powerful movie information scraper for VegaMovies and similar domains.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
